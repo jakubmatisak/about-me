@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="sk" data-mode="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ing. Jakub Matišák, PhD. — IOLab @ FEI STU</title>
+  <meta name="description" content="Jakub Matišák — vývojár virtuálneho laboratória, IOLab @ FEI STU Bratislava. Výskum: virtuálne laboratóriá, AR a holografia vo vzdelávaní." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Map design tokens into Tailwind so `bg-card`, `text-accent`, etc. work in markup.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: "var(--accent)",
+            bg: "var(--bg)",
+            "bg-soft": "var(--bg-soft)",
+            "bg-card": "var(--bg-card)",
+            "bg-card-hover": "var(--bg-card-hover)",
+            line: "var(--line)",
+            "line-strong": "var(--line-strong)",
+            text: "var(--text)",
+            "text-dim": "var(--text-dim)",
+            "text-mute": "var(--text-mute)",
+            ok: "var(--ok)",
+          },
+          fontFamily: {
+            mono:  ["JetBrains Mono", "ui-monospace", "monospace"],
+            sans:  ["Inter", "system-ui", "sans-serif"],
+            serif: ["Instrument Serif", "Georgia", "serif"],
+          },
+        },
+      },
+      corePlugins: { preflight: false },
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <!-- ============================== TOP BAR ============================== -->
+  <header class="topbar">
+    <a href="#top" class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">jmatisak<span class="brand-cursor">_</span></span>
+      <span class="brand-meta">IOLab @ FEI STU</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#o-mne"       data-i18n="nav.o-mne">~/o-mne</a>
+      <a href="#dev"         data-i18n="nav.dev">~/dev</a>
+      <a href="#vyskum"      data-i18n="nav.vyskum">~/výskum</a>
+      <a href="#projekty"    data-i18n="nav.projekty">~/projekty</a>
+      <a href="#publikacie"  data-i18n="nav.publikacie">~/publikácie</a>
+      <a href="#ucim"        data-i18n="nav.ucim">~/učím</a>
+      <a href="#kontakt"     data-i18n="nav.kontakt">~/kontakt</a>
+    </nav>
+    <div class="bar-right">
+      <div class="role-switch" role="tablist" aria-label="Role">
+        <button class="rs-btn" data-role="dev"      type="button">vývojár</button>
+        <button class="rs-btn" data-role="research" type="button">výskumník</button>
+        <button class="rs-btn" data-role="teach"    type="button">pedagóg</button>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language">
+        <button class="ls-btn" data-lang-btn="sk" type="button">SK</button>
+        <button class="ls-btn" data-lang-btn="en" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ============================== HERO ============================== -->
+    <section id="top" class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="eyebrow">
+            <span class="dot-live"></span>
+            <span data-i18n="nav.eyebrow">IOLab @ FEI STU · Bratislava · open to collaborations</span>
+          </div>
+          <h1 id="hero-title" class="hero-title anim-swap">
+            Píšem<br/><em>frontend.</em><br/>Aj backend, keď treba.
+          </h1>
+          <p class="hero-sub">
+            <span data-i18n="hero.ahoj">Ahoj, som</span>
+            <strong data-i18n="hero.jmeno">Jakub Matišák</strong>.
+            <span id="hero-sub-role"></span>
+          </p>
+          <div class="hero-cta">
+            <a href="#vyskum" class="btn btn--primary">
+              <span data-i18n="hero.cta1">pozrieť výskum</span>
+              <span class="arr">→</span>
+            </a>
+            <a href="https://iolab.sk" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <span data-i18n="hero.cta2">iolab.sk</span> ↗
+            </a>
+          </div>
+          <div id="hero-stats" class="hero-stats"></div>
+        </div>
+
+        <div class="hero-right">
+          <div id="terminal" class="terminal"></div>
+          <div class="role-hint">
+            <span data-i18n="hero.tip">// tip: prepni kontext —</span>
+            <div class="role-cmds">
+              <button class="rc" data-role="dev"      type="button">$ switch --role=dev</button>
+              <button class="rc" data-role="research" type="button">$ switch --role=research</button>
+              <button class="rc" data-role="teach"    type="button">$ switch --role=teach</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-inner">
+            VUE · VUETIFY · ANGULAR · TYPESCRIPT · PINIA · VUEX · LARAVEL · PHP · PYTHON · REST · MSAL · JWT · AZURE AD · MYSQL · MSSQL · CYPRESS · BABYLON · PLOTLY · APEX · DOCKER · GIT · LINUX · SCILAB · XCOS · OPENMODELICA · MATLAB · ARCORE · HOLOLENS · UNITY · WEBGL · JAVASCRIPT · IEEE · IFAC · KEGA · VEGA · APVV ·&nbsp;
+          </span>
+          <span class="marquee-inner">
+            VUE · VUETIFY · ANGULAR · TYPESCRIPT · PINIA · VUEX · LARAVEL · PHP · PYTHON · REST · MSAL · JWT · AZURE AD · MYSQL · MSSQL · CYPRESS · BABYLON · PLOTLY · APEX · DOCKER · GIT · LINUX · SCILAB · XCOS · OPENMODELICA · MATLAB · ARCORE · HOLOLENS · UNITY · WEBGL · JAVASCRIPT · IEEE · IFAC · KEGA · VEGA · APVV ·&nbsp;
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section id="o-mne" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="about.n">01</div>
+        <div class="sh-t">
+          <h2 data-i18n="about.title">o mne</h2>
+          <div class="sh-sub" data-i18n="about.sub">// vývojár · výskumník · pedagóg</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-portrait" data-reveal>
+          <div class="portrait">
+            <div class="portrait-inner">
+              <span class="portrait-init">JM</span>
+              <img class="portrait-photo"
+                   src="assets/jakub.jpg"
+                   alt="Jakub Matišák"
+                   loading="lazy"
+                   onerror="this.style.display='none'" />
+            </div>
+            <div class="portrait-tag">
+              <span class="dot-live"></span>
+              <span data-i18n="about.portraitTag">online · káva v ruke</span>
+            </div>
+          </div>
+          <dl class="affil">
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.remeslo.0">remeslo</dt><dd class="affil-v" data-i18n="about.affil.remeslo.1">fullstack vývojár</dd></div>
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.tim.0">tím</dt><dd class="affil-v" data-i18n="about.affil.tim.1">IOLab</dd></div>
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.ustav.0">ústav</dt><dd class="affil-v" data-i18n="about.affil.ustav.1">automobilovej mechatroniky</dd></div>
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.fakulta.0">fakulta</dt><dd class="affil-v" data-i18n="about.affil.fakulta.1">FEI STU</dd></div>
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.email.0">e-mail</dt><dd class="affil-v" data-i18n="about.affil.email.1">jakub.matisak@stuba.sk</dd></div>
+            <div class="affil-row"><dt class="affil-k" data-i18n="about.affil.orcid.0">orcid</dt><dd class="affil-v" data-i18n="about.affil.orcid.1">0009-0000-2850-7565</dd></div>
+          </dl>
+        </div>
+
+        <div class="about-copy" data-reveal style="--reveal-delay: 120ms;">
+          <p class="lead" data-i18n-html="about.lead"></p>
+          <p data-i18n-html="about.body.0"></p>
+          <p data-i18n-html="about.body.1"></p>
+          <dl class="facts">
+            <div><dt data-i18n="about.facts.lokacia.0">lokácia</dt><dd data-i18n="about.facts.lokacia.1">Bratislava, SK</dd></div>
+            <div><dt data-i18n="about.facts.cas.0">časové pásmo</dt><dd data-i18n="about.facts.cas.1">UTC+2 · CET</dd></div>
+            <div><dt data-i18n="about.facts.freelance.0">freelance</dt><dd><span class="chip chip--mute" data-i18n="about.facts.freelance.1">aktuálne plne vyťažený</span></dd></div>
+            <div><dt data-i18n="about.facts.prace.0">vedie záverečné práce</dt><dd data-i18n="about.facts.prace.1">áno (Bc., Ing.)</dd></div>
+            <div><dt data-i18n="about.facts.uzitkovy.0">úžitkový vzor</dt><dd data-i18n="about.facts.uzitkovy.1">č. 8947 (2020)</dd></div>
+            <div><dt data-i18n="about.facts.spoluautori.0">spoluautori</dt><dd data-i18n="about.facts.spoluautori.1">K. Žáková · J. Šefčík · M. Rábek</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== DEV ============================== -->
+    <section id="dev" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="dev.n">02</div>
+        <div class="sh-t">
+          <h2 data-i18n="dev.title">dev & remeslo</h2>
+          <div class="sh-sub" data-i18n="dev.sub">// čím píšem · čo staviam</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div id="dev-stack" class="dev-stack"></div>
+
+      <div class="side-h">
+        <span class="side-h-l" data-i18n="dev.sidesH.l">// projekty &amp; práce</span>
+        <span class="side-h-r" data-i18n="dev.sidesH.r">cez deň · pomimo · voľný čas</span>
+      </div>
+
+      <div id="side-grid" class="side-grid"></div>
+    </section>
+
+    <!-- ============================== RESEARCH ============================== -->
+    <section id="vyskum" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="research.n">03</div>
+        <div class="sh-t">
+          <h2 data-i18n="research.title">výskum</h2>
+          <div class="sh-sub" data-i18n="research.sub">// druhá polovica mozgu</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div id="topic-grid" class="topic-grid"></div>
+
+      <div class="ovl-card" data-reveal>
+        <div class="ovl-l">
+          <div class="ovl-tag" data-i18n="research.ovl.tag">// hlavný projekt</div>
+          <div class="ovl-name">
+            <span data-i18n="research.ovl.name">OVL</span>
+            <span class="ovl-sub" data-i18n="research.ovl.sub">Online Virtual Laboratory</span>
+          </div>
+          <p data-i18n="research.ovl.desc">Webový ekosystém, ktorý prepája simulačné prostredia (Scilab/Xcos, OpenModelica, Matlab) s 3D modelmi reálnych laboratórnych zariadení.</p>
+          <div class="ovl-stack">
+            <span class="pill">Scilab Engine</span>
+            <span class="pill">OpenModelica Engine</span>
+            <span class="pill">3D models</span>
+            <span class="pill">ARCore</span>
+            <span class="pill">Holographic display</span>
+          </div>
+        </div>
+        <div class="ovl-r">
+          <pre class="ovl-ascii" data-i18n="research.ovl.ascii"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== GRANTS ============================== -->
+    <section id="projekty" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="projects.n">04</div>
+        <div class="sh-t">
+          <h2 data-i18n="projects.title">granty &amp; projekty STU</h2>
+          <div class="sh-sub" data-i18n="projects.sub">// formálne, s číslami a pečiatkami</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="grant-filter" role="tablist" aria-label="Grant filter">
+        <button class="gf"       data-filter="all"     type="button"><span data-i18n="projects.filters.all">všetky</span> <span class="gf-c">8</span></button>
+        <button class="gf is-on" data-filter="running" type="button"><span data-i18n="projects.filters.running">prebiehajúce</span> <span class="gf-c">5</span></button>
+        <button class="gf"       data-filter="done"    type="button"><span data-i18n="projects.filters.done">ukončené</span> <span class="gf-c">3</span></button>
+      </div>
+
+      <ul id="grant-list" class="grant-list"></ul>
+
+      <div id="grants-more" class="pubs-more">
+        <button id="grants-more-btn" class="pubs-more-btn" type="button"></button>
+      </div>
+    </section>
+
+    <!-- ============================== PUBLICATIONS ============================== -->
+    <section id="publikacie" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="pubs.n">05</div>
+        <div class="sh-t">
+          <h2 data-i18n="pubs.title">publikácie</h2>
+          <div id="pubs-sub" class="sh-sub">// 25 záznamov · zobrazujem top 5</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="pubs-h">
+        <span class="pubs-h-l" data-i18n="pubs.headL">// vybrané · zoradené podľa roku</span>
+        <span class="pubs-h-r">
+          <a href="https://www.researchgate.net/profile/Jakub-Matisak" target="_blank" rel="noreferrer" data-i18n="pubs.headR">celý zoznam na ResearchGate ↗</a>
+        </span>
+      </div>
+
+      <ul id="pub-list" class="pub-list"></ul>
+
+      <div id="pubs-more" class="pubs-more">
+        <button id="pubs-more-btn" class="pubs-more-btn" type="button"></button>
+      </div>
+    </section>
+
+    <!-- ============================== TEACHING ============================== -->
+    <section id="ucim" class="section">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="teach.n">06</div>
+        <div class="sh-t">
+          <h2 data-i18n="teach.title">učím &amp; vediem</h2>
+          <div class="sh-sub" data-i18n="teach.sub">// FEI STU · Ústav automobilovej mechatroniky</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div id="teach-summary" class="teach-summary"></div>
+
+      <div class="theses-h" data-i18n="teach.thesesH">// posledné vedené práce</div>
+      <div class="theses-wrap" data-reveal>
+        <table class="theses">
+          <tbody id="theses-body"></tbody>
+        </table>
+      </div>
+
+      <div class="theses-foot" data-reveal>
+        <a class="link-arr"
+           href="https://iolab.sk/team/map-projects_csv-body-njakub-matisak-sa-specializuje-na-vyvoj-virtualnych-laboratorii-so-zameranim-na-rozsirenu-realitu-a-holograficke-vizualizacne-technologie-pre-vzdelavacie-ucely-n-active-true-name-ing-jakub-matisak-phd-f"
+           target="_blank" rel="noreferrer">
+          <span data-i18n="teach.footLink">všetky práce na iolab.sk</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT ============================== -->
+    <section id="kontakt" class="section section--contact">
+      <div class="section-head" data-reveal>
+        <div class="sh-n" data-i18n="contact.n">07</div>
+        <div class="sh-t">
+          <h2 data-i18n="contact.title">kontakt</h2>
+          <div class="sh-sub" data-i18n="contact.sub">// najlepšie cez email</div>
+        </div>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-main" data-reveal>
+          <div class="contact-lead" data-i18n-html="contact.lead">
+            Spolupráca, výskum,<br/>téma na diplomovku?<br/><em>Ozvi sa.</em>
+          </div>
+          <button id="email-btn" class="email-btn" type="button">
+            <span id="email-at" class="email-at">jakub.matisak@stuba.sk</span>
+            <span id="email-copy" class="email-copy" data-i18n="contact.copy">⧉ kopírovať</span>
+          </button>
+          <p class="contact-note" data-i18n="contact.note">
+            FEI STU, Ústav automobilovej mechatroniky, Ilkovičova 3, Bratislava. Email odpovedám obvykle do 24h.
+          </p>
+        </div>
+
+        <div class="contact-socials" data-reveal style="--reveal-delay: 100ms;">
+          <div class="sock-h" data-i18n="contact.socialsH">// inde na internete</div>
+          <ul id="socials"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COLOPHON ============================== -->
+    <section class="colophon">
+      <div class="colophon-grid">
+        <div class="colo-l" data-reveal>
+          <div class="colo-tag" data-i18n="colophon.tag">// colophon · postscript</div>
+          <h3 class="colo-q" data-i18n-html="colophon.q"></h3>
+          <p class="colo-a" data-i18n-html="colophon.a"></p>
+          <p class="colo-foot" data-i18n-html="colophon.foot"></p>
+        </div>
+        <div class="colo-r" data-reveal style="--reveal-delay: 120ms;">
+          <pre id="colo-ascii" class="colo-ascii"></pre>
+          <div class="colo-stamp" data-i18n="colophon.stamp">built in &lt; 1h · between two meetings · ☕</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="footer-l">
+      <div class="foot-brand">Ing. Jakub Matišák, PhD.<span>_</span></div>
+      <div class="foot-meta">
+        <span data-i18n="footer.copy">© 2026 · IOLab @ FEI STU Bratislava ·</span>
+        <a href="#top" data-i18n="footer.top">↑ späť hore</a>
+      </div>
+    </div>
+    <div class="footer-r">
+      <pre id="foot-ascii" class="foot-ascii"></pre>
+    </div>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
