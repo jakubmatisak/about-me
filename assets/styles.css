@@ -439,7 +439,7 @@ button { font: inherit; color: inherit; }
   z-index: 1;
 }
 .portrait-inner::after {
-  content: "jakub.jpg";
+  content: "jakub.png";
   position: absolute; bottom: 10px; left: 12px;
   font-size: 10px; color: var(--text-mute); font-family: var(--font-mono);
   z-index: 2;
@@ -687,10 +687,13 @@ button { font: inherit; color: inherit; }
   border: 1px solid color-mix(in oklab, var(--accent) 25%, var(--line));
   border-radius: var(--radius-lg);
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: center;
 }
+/* Stop the ASCII <pre> from forcing the grid track wider than viewport. */
+.ovl-l, .ovl-r { min-width: 0; }
+.ovl-ascii { max-width: 100%; }
 .ovl-tag {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1236,6 +1239,7 @@ button { font: inherit; color: inherit; }
   .foot-ascii { font-size: 8px; }
   .email-at { font-size: 15px; }
   .teach-summary { grid-template-columns: 1fr; }
+  .ovl-r { display: none; }  /* hide OVL ASCII diagram on phones */
   .theses td { padding: 10px 12px; font-size: 12px; }
   .th-name { font-size: 13px; }
   .th-student { display: block; text-align: left; margin-top: 4px; color: var(--text-mute); font-size: 11px; }

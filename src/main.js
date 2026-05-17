@@ -365,6 +365,26 @@ function attachReveal(root = document) {
   root.querySelectorAll("[data-reveal]:not(.is-in)").forEach((el) => io.observe(el));
 }
 
+/* -------------------- timezone (DST-aware) -------------------- */
+function renderTimezone() {
+  const el = $("#tz-value");
+  if (!el) return;
+  // Use Intl to read Bratislava's current short timezone name (e.g. "GMT+2").
+  // Slovakia: CEST = UTC+2 (last Sun of March → last Sun of October), CET = UTC+1.
+  let offset = 1;
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Bratislava",
+      timeZoneName: "short",
+    }).formatToParts(new Date());
+    const tzPart = parts.find((p) => p.type === "timeZoneName")?.value || "";
+    const m = tzPart.match(/([+-]?\d+)/);
+    if (m) offset = parseInt(m[1], 10);
+  } catch {}
+  const abbr = offset === 2 ? "CEST" : "CET";
+  el.textContent = `UTC+${offset} · ${abbr}`;
+}
+
 /* -------------------- email copy -------------------- */
 function wireEmail() {
   const btn = $("#email-btn");
@@ -517,6 +537,7 @@ function boot() {
   wireEmail();
   wireColophon();
   topBarScroll();
+  renderTimezone();
   initTerminal();
   attachReveal(document);
 }

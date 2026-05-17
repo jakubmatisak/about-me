@@ -22,7 +22,7 @@ export const MESSAGES = {
     },
     roles: {
       dev:      { label: "vývojár",  cmd: "switch --role=dev",      headline: ["Píšem", "frontend.", "Aj backend, keď treba."], sub: "Frontend vývojár so zázemim v Vue, Vuetify a Angulare. K backendu prejdem keď to projekt potrebuje — Python, Laravel, REST API. Cez deň robím na projektoch, pomimo učím a robím výskum." },
-      research: { label: "výskumník", cmd: "switch --role=research", headline: ["Skúmam", "AR a holografiu", "vo vzdelávaní."], sub: "Online laboratóriá pre výučbu automatického riadenia, 3D vizualizácia mechatronických systémov, využitie rozšírenej reality a holografie v inžinierskom vzdelávaní." },
+      research: { label: "výskumník", cmd: "switch --role=research", headline: ["Skúmam", "virtuálne laboratóriá,", "3D simulácie a viac."], sub: "Virtuálne laboratóriá pre výučbu automatického riadenia, 3D vizualizácia mechatronických systémov a simulácie v reálnom čase. K tomu aj rozšírená realita a holografia v inžinierskom vzdelávaní." },
       teach:    { label: "pedagóg",   cmd: "switch --role=teach",    headline: ["Učím na", "FEI STU", "Bratislava."],          sub: "Ústav automobilovej mechatroniky. Doteraz som viedol 23 záverečných prác — bakalárky, diplomovky aj jednu dizertačnú." },
     },
     hero: {
@@ -31,7 +31,7 @@ export const MESSAGES = {
       cta1: "pozrieť výskum",
       cta2: "iolab.sk",
       stats: [
-        { n: "10+", l: "rokov s kódom" },
+        { n: "8+", l: "rokov s kódom" },
         { n: "25",  l: "publikácií" },
         { n: "8",   l: "grantov" },
         { n: "23",  l: "vedených prác" },
@@ -53,15 +53,13 @@ export const MESSAGES = {
       lead: 'Som hlavne <em>vývojár</em>. Cez deň robím na <strong>projektoch</strong>, pomimo <em>učím</em> a <em>robím výskum</em>.',
       body: [
         'Špecializujem sa na <strong>frontend</strong> — Vue, Vuetify, Angular. Backendu sa nevyhýbam, naopak: keď to projekt potrebuje, prejdem na <strong>Python</strong>, <strong>Laravel</strong> alebo čo úloha vyžaduje. Najradšej mám projekty, kde frontend a backend držia spolu od začiatku.',
-        'Pomimo dev práce učím na <strong>FEI STU</strong> a v <strong>IOLab</strong> robím výskum okolo virtuálnych laboratórií, AR a holografie vo vzdelávaní. PhD mám z roku 2022 — dizertačka <em>„Platforma pre virtuálne laboratórium mechatronických systémov"</em> u doc. Katky Žákovej.',
+        'Pomimo dev práce učím na <strong>FEI STU</strong> a v <strong>IOLab</strong> robím výskum okolo virtuálnych laboratórií, AR a holografie vo vzdelávaní. PhD mám z roku 2022 — dizertačka <em>„Platforma pre virtuálne laboratórium mechatronických systémov"</em> u prof. Katky Žákovej.',
       ],
       facts: {
         lokacia: ["lokácia", "Bratislava, SK"],
-        cas: ["časové pásmo", "UTC+2 · CET"],
+        cas: "časové pásmo",
         freelance: ["freelance", "aktuálne plne vyťažený"],
         prace: ["vedie záverečné práce", "áno (Bc., Ing.)"],
-        uzitkovy: ["úžitkový vzor", "č. 8947 (2020)"],
-        spoluautori: ["spoluautori", "K. Žáková · J. Šefčík · M. Rábek"],
       },
     },
     dev: {
@@ -91,7 +89,7 @@ export const MESSAGES = {
       topics: {
         vlabs: { k: "virtuálne laboratóriá",        desc: "OVL platforma — Scilab/Xcos a OpenModelica engines napojené na 3D modely reálnych mechatronických zariadení. Ovládanie cez web." },
         ar:    { k: "AR & holografia vo vzdelávaní", desc: "Holografický 3D towercopter, ARCore vizualizácie riadiacich experimentov nad fyzickým modelom, HoloLens experimenty." },
-        viz:   { k: "3D vizualizácia mechatroniky",  desc: "Interaktívne 3D modely — ball-on-plate, towercopter, termo-opto-mechanické sústavy, hydraulika. Web rendering + simulácia v reálnom čase." },
+        viz:   { k: "3D vizualizácie v mechatronike", desc: "Interaktívne 3D modely — ball-on-plate, towercopter, termo-opto-mechanické sústavy, hydraulika. Web rendering + simulácia v reálnom čase." },
         ai:    { k: "AI v inžinierskej pedagogike",  desc: "Vplyv LLM (ChatGPT) na vysokoškolské vzdelávanie. Spoluautor článku v Education and Information Technologies (2025)." },
       },
       ovl: {
@@ -124,7 +122,7 @@ export const MESSAGES = {
       n: "05", title: "publikácie", subTpl: "// 25 záznamov · zobrazujem {0}", subTop: "top 3", subFull: "výber",
       headL: "// vybrané · zoradené podľa roku", headR: "celý zoznam na ResearchGate ↗",
       meta: { authors: "autori", venue: "venue", pages: "strany" },
-      typeLabel: { conf: "conf.", journal: "journal", monograph: "patent" },
+      typeLabel: { conf: "conf.", journal: "journal", monograph: "úžitkový vzor" },
       moreTpl: "↓ zobraziť ďalších {0}", less: "↑ zobraziť menej",
       titles: {
         0: "Exploring student and teacher perspectives on ChatGPT's impact in higher education",
@@ -195,7 +193,7 @@ export const MESSAGES = {
     },
     roles: {
       dev:      { label: "developer",  cmd: "switch --role=dev",      headline: ["I build", "frontends.", "Backend too, when needed."], sub: "Frontend developer rooted in Vue, Vuetify and Angular. I move to the backend when the project calls for it — Python, Laravel, REST APIs. Days are for projects, evenings for teaching and research." },
-      research: { label: "researcher", cmd: "switch --role=research", headline: ["I research", "AR & holography", "in education."],     sub: "Online laboratories for control-systems teaching, 3D visualization of mechatronic systems, augmented reality and holography in engineering education." },
+      research: { label: "researcher", cmd: "switch --role=research", headline: ["I research", "virtual laboratories,", "3D and simulations."], sub: "Virtual laboratories for control-systems teaching, 3D visualization of mechatronic systems, and real-time simulation. Plus augmented reality and holography in engineering education." },
       teach:    { label: "teacher",    cmd: "switch --role=teach",    headline: ["I teach at", "FEI STU", "Bratislava."],                 sub: "Institute of Automotive Mechatronics. I've supervised 23 final theses so far — bachelor's, master's, and one doctoral." },
     },
     hero: {
@@ -204,7 +202,7 @@ export const MESSAGES = {
       cta1: "see the research",
       cta2: "iolab.sk",
       stats: [
-        { n: "10+", l: "years writing code" },
+        { n: "8+", l: "years writing code" },
         { n: "25",  l: "publications" },
         { n: "8",   l: "grants" },
         { n: "23",  l: "theses supervised" },
@@ -226,15 +224,13 @@ export const MESSAGES = {
       lead: 'Mainly a <em>developer</em>. Days I spend on <strong>projects</strong>, on the side I <em>teach</em> and <em>do research</em>.',
       body: [
         'I focus on <strong>frontend</strong> — Vue, Vuetify, Angular. I don\'t shy away from the backend: when a project needs it I switch to <strong>Python</strong>, <strong>Laravel</strong> or whatever the task requires. My favourite projects are the ones where the frontend and backend grow together from day one.',
-        'Alongside dev work I teach at <strong>FEI STU</strong> and in <strong>IOLab</strong> I do research on virtual laboratories, AR and holography in education. PhD since 2022 — dissertation <em>"Platform for virtual laboratory of mechatronic systems"</em> under doc. Katarína Žáková.',
+        'Alongside dev work I teach at <strong>FEI STU</strong> and in <strong>IOLab</strong> I do research on virtual laboratories, AR and holography in education. PhD since 2022 — dissertation <em>"Platform for virtual laboratory of mechatronic systems"</em> under prof. Katarína Žáková.',
       ],
       facts: {
         lokacia: ["location", "Bratislava, SK"],
-        cas: ["timezone", "UTC+2 · CET"],
+        cas: "timezone",
         freelance: ["freelance", "currently fully booked"],
         prace: ["thesis supervision", "yes (BSc, MSc)"],
-        uzitkovy: ["utility model", "no. 8947 (2020)"],
-        spoluautori: ["co-authors", "K. Žáková · J. Šefčík · M. Rábek"],
       },
     },
     dev: {
@@ -264,7 +260,7 @@ export const MESSAGES = {
       topics: {
         vlabs: { k: "virtual laboratories",         desc: "The OVL platform — Scilab/Xcos and OpenModelica engines wired to 3D models of real mechatronic devices. Controlled through the web." },
         ar:    { k: "AR & holography in education", desc: "Holographic 3D towercopter, ARCore visualizations of control experiments over the physical model, HoloLens experiments." },
-        viz:   { k: "3D visualization of mechatronics", desc: "Interactive 3D models — ball-on-plate, towercopter, thermo-opto-mechanical systems, hydraulics. Web rendering + real-time simulation." },
+        viz:   { k: "3D visualizations in mechatronics", desc: "Interactive 3D models — ball-on-plate, towercopter, thermo-opto-mechanical systems, hydraulics. Web rendering + real-time simulation." },
         ai:    { k: "AI in engineering pedagogy",   desc: "The impact of LLMs (ChatGPT) on higher education. Co-author of an article in Education and Information Technologies (2025)." },
       },
       ovl: {
@@ -297,7 +293,7 @@ export const MESSAGES = {
       n: "05", title: "publications", subTpl: "// 25 records · showing {0}", subTop: "top 3", subFull: "selection",
       headL: "// selected · ordered by year", headR: "full list on ResearchGate ↗",
       meta: { authors: "authors", venue: "venue", pages: "pages" },
-      typeLabel: { conf: "conf.", journal: "journal", monograph: "patent" },
+      typeLabel: { conf: "conf.", journal: "journal", monograph: "utility model" },
       moreTpl: "↓ show {0} more", less: "↑ show fewer",
       titles: {
         0: "Exploring student and teacher perspectives on ChatGPT's impact in higher education",

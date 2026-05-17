@@ -23,7 +23,7 @@ export const SIDE_PROJECTS = [
 
 export const TOPICS = [
   { id: "vlabs",  tag: "primary" },
-  { id: "ar",     tag: "secondary" },
+  { id: "ar",     tag: "primary" },
   { id: "viz",    tag: "active" },
   { id: "ai",     tag: "growing" },
 ];
@@ -52,7 +52,7 @@ export const PUBS = [
   { type: "conf",      year: "2022", authors: ["MATIŠÁK, J.", "ŽÁKOVÁ, K.", "RÁBEK, M."],                                    venue: "Cybernetics & Informatics K&I 2022 (IEEE)",                  pages: "—",                    tags: ["holography", "control"] },
   { type: "journal",   year: "2020", authors: ["MATIŠÁK, J.", "RÁBEK, M.", "ŽÁKOVÁ, K."],                                    venue: "Journal of Automation, Mobile Robotics and Intelligent Systems", pages: "vol. 14, pp. 42–47", tags: ["holography", "education", "3D"] },
   { type: "conf",      year: "2020", authors: ["MATIŠÁK, J.", "ŽÁKOVÁ, K."],                                                 venue: "21st IFAC World Congress (Elsevier)",                        pages: "pp. 17536–17541",      tags: ["IFAC", "holography", "towercopter"] },
-  { type: "monograph", year: "2020", authors: ["ŤAPÁK, P.", "MATIŠÁK, J."],                                                   venue: "Úžitkový vzor č. 8947, ÚPV SR",                              pages: "Vestník č. 12/2020",   tags: ["patent", "hardware"] },
+  { type: "monograph", year: "2020", authors: ["ŤAPÁK, P.", "MATIŠÁK, J."],                                                   venue: "Úžitkový vzor č. 8947, ÚPV SR",                              pages: "Vestník č. 12/2020",   tags: ["hardware", "ÚPV SR"] },
   { type: "conf",      year: "2018", authors: ["MATIŠÁK, J.", "ŽÁKOVÁ, K."],                                                 venue: "ICETA 2018 (IEEE)",                                          pages: "pp. 355–360",          tags: ["web tool", "mechanical models"] },
 ];
 
@@ -98,7 +98,7 @@ export const TERM_SCRIPTS = {
     { type: "out", text: "3D visualization of mechatronics  ▮▮▮▮▮▮▮▮▮▯ active" },
     { type: "out", text: "AI in higher education .......... ▮▮▮▮▮▮▮▯▯▯ growing" },
     { type: "cmd", text: "wc -l ~/publications/* | tail -1" },
-    { type: "out", text: "25  total · 2 časopisy · 1 monografia · 18 zborníky" },
+    { type: "out", text: "25  total · 2 časopisy · 1 úžitkový vzor · 18 zborníky" },
     { type: "cmd", text: "git log --oneline -3 grants/" },
     { type: "out", text: "012STU-4/2026  KEGA · InnoTech Hub (garant)", cls: "ok" },
     { type: "out", text: "APVV-24-0390   LiDAR diagnostika pohybu (riešiteľ)" },
@@ -146,7 +146,7 @@ export const TERM_SCRIPTS_EN = {
     { type: "out", text: "3D visualization of mechatronics  ▮▮▮▮▮▮▮▮▮▯ active" },
     { type: "out", text: "AI in higher education .......... ▮▮▮▮▮▮▮▯▯▯ growing" },
     { type: "cmd", text: "wc -l ~/publications/* | tail -1" },
-    { type: "out", text: "25  total · 2 journals · 1 monograph · 18 proceedings" },
+    { type: "out", text: "25  total · 2 journals · 1 utility model · 18 proceedings" },
     { type: "cmd", text: "git log --oneline -3 grants/" },
     { type: "out", text: "012STU-4/2026  KEGA · InnoTech Hub (PI)", cls: "ok" },
     { type: "out", text: "APVV-24-0390   LiDAR motion diagnostics (co-PI)" },
